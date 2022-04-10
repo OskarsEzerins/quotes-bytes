@@ -16,7 +16,8 @@ function Quotes() {
 
   return (
     <div>
-      <p>{data.en}</p>
+      <p>{`"${data.en}"`}</p>
+      <p>{`- ${data.author}`}</p>
     </div>
   )
 }
