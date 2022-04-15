@@ -20,7 +20,7 @@ function Quote({ isLoading, data }: { isLoading: boolean; data: QuoteData }): JS
   return (
     <div>
       <p>{`"${quote}"`}</p>
-      <p>{`- ${author}`}</p>
+      <p className={styles.author}>{`- ${author}`}</p>
     </div>
   )
 }
