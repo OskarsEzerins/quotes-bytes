@@ -5,11 +5,14 @@ import styles from './styles.module.sass'
 import { getProgrammingQuotes, QuoteData } from 'modules/common/quotesSources'
 import { useKeyPress } from 'modules/hooks'
 
+import classNames from 'classnames'
+import { RiRefreshLine } from 'react-icons/ri'
+
 function Quote({ isLoading, data }: { isLoading: boolean; data: QuoteData }): JSX.Element {
-  if (!data) {
-    return <div>No quotes available :(</div>
-  } else if (isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>
+  } else if (!data) {
+    return <div>No quotes available :(</div>
   }
 
   const { quote, author } = data
@@ -42,12 +45,13 @@ function Quotes() {
 
   return (
     <main className={styles.main}>
-      <div className='flex column gap-1'>
-        <Quote isLoading={isLoading} data={data} />
-        <button type='button' onClick={loadData} disabled={isLoading}>
-          refresh (spacebar)
-        </button>
-      </div>
+      <Quote isLoading={isLoading} data={data} />
+      <button className={styles.refresh_button} onClick={loadData} disabled={isLoading}>
+        <RiRefreshLine className={classNames({ [styles.rotating]: isLoading })} />
+        {classNames({
+          '(press spacebar)': !('ontouchstart' in document.documentElement),
+        })}
+      </button>
     </main>
   )
 }

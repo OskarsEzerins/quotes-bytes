@@ -1,5 +1,36 @@
 .main
+  font-size: 1.25rem
+  font-family: 'SinkinSans', sans-serif
   display: grid
   place-items: center
-  height: 98vh
+  grid-template-rows: 1fr auto
+  height: 90vh
   padding: 5vmin
+
+.refresh_button
+  display: grid
+  place-items: center
+  font-size: 1rem
+  font-style: italic
+  color: #cbc9c9
+  height: 10vh
+  width: 60vw
+  background: transparent
+  border: none
+
+  svg
+    color: #4c4949
+    width: 2em
+    height: 2em
+
+.rotating
+  animation-name: spin
+  animation-duration: 500ms
+  animation-iteration-count: infinite
+  animation-timing-function: linear
+
+  @keyframes spin
+    from
+      transform: rotate(0deg)
+    to
+      transform: rotate(360deg)
