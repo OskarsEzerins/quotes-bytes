@@ -1,9 +1,12 @@
-import axios from 'axios'
-import { PROGRAMMING_QUOTES_URL } from 'modules/common/quotesSources'
 import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
-import { PROGRAMMING_QUOTES_RESPONSE } from './types'
+
 import styles from './styles.module.sass'
+import { PROGRAMMING_QUOTES_RESPONSE } from './types'
+
+import { PROGRAMMING_QUOTES_URL } from 'modules/common/quotesSources'
 import { useKeyPress } from 'modules/hooks'
+
+import axios from 'axios'
 
 function Quotes() {
   const [data, setData] = useState<PROGRAMMING_QUOTES_RESPONSE>({})
@@ -16,14 +19,13 @@ function Quotes() {
 
     axios
       .get(PROGRAMMING_QUOTES_URL)
-      .then(({ data }) => typeof data?.en === 'string' ? setData(data) : setError(true))
-      .catch((_err) => setError(true))
+      .then(({ data }) => (typeof data?.en === 'string' ? setData(data) : setError(true)))
+      .catch(() => setError(true))
       .then(() => setIsLoading(false))
   }, [setIsLoading, setData, setError])
 
   useLayoutEffect(() => {
-    // NOTE: requests are made in development twice due to react strict mode
-    loadData()
+    loadData() // NOTE: requests are made in development twice due to react strict mode
   }, [loadData])
 
   useEffect(() => {
