@@ -1,50 +1,49 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import styles from './styles.module.sass'
-import { PROGRAMMING_QUOTES_RESPONSE } from './types'
 
-import { PROGRAMMING_QUOTES_URL } from 'modules/common/quotesSources'
+import { getProgrammingQuotes, QuoteData } from 'modules/common/quotesSources'
 import { useKeyPress } from 'modules/hooks'
 
-import axios from 'axios'
+function Quote({ isLoading, data }: { isLoading: boolean; data: QuoteData }): JSX.Element {
+  if (!data) {
+    return <div>No quotes available :(</div>
+  } else if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  const { quote, author } = data
+
+  return (
+    <div>
+      <p>{`"${quote}"`}</p>
+      <p>{`- ${author}`}</p>
+    </div>
+  )
+}
 
 function Quotes() {
-  const [data, setData] = useState<PROGRAMMING_QUOTES_RESPONSE>({})
-  const [isLoading, setIsLoading] = useState<boolean | undefined>()
-  const [error, setError] = useState<boolean | undefined>()
+  const [data, setData] = useState<QuoteData>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const spaceBarPress = useKeyPress(' ')
 
-  const loadData = useCallback(() => {
+  const loadData = useCallback(async () => {
     setIsLoading(true)
 
-    axios
-      .get(PROGRAMMING_QUOTES_URL)
-      .then(({ data }) => (typeof data?.en === 'string' ? setData(data) : setError(true)))
-      .catch(() => setError(true))
-      .then(() => setIsLoading(false))
-  }, [setIsLoading, setData, setError])
+    const data = await getProgrammingQuotes()
+    data && setData(data)
 
-  useLayoutEffect(() => {
-    loadData() // NOTE: requests are made in development twice due to react strict mode
-  }, [loadData])
+    setIsLoading(false)
+  }, [setIsLoading, setData])
 
   useEffect(() => {
-    spaceBarPress && loadData()
+    loadData()
   }, [loadData, spaceBarPress])
-
-  if (error) return <div>Failed to load</div>
 
   return (
     <main className={styles.main}>
       <div className='flex column gap-1'>
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          <div>
-            <p>{`"${data.en}"`}</p>
-            <p>{`- ${data?.author}`}</p>
-          </div>
-        )}
+        <Quote isLoading={isLoading} data={data} />
         <button type='button' onClick={loadData} disabled={isLoading}>
           refresh (spacebar)
         </button>

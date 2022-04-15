@@ -6,6 +6,6 @@
   "printWidth": 120,
   "jsxSingleQuote": true,
   "arrowParens": "always",
-  "importOrder": ['^react$', '^[.]', '^[styles/]', '^[modules/]', '^.'],
+  "importOrder": ["^react$", "^[.]", "^[styles/]", "^[modules/]", "^."],
   "importOrderSeparation": true
 }
