@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import Quote from './Quote'
+import Quote from './quote'
 import styles from './styles.module.sass'
 
 import { getProgrammingQuotes, QuoteData } from 'modules/common/quotesSources'
@@ -36,9 +36,10 @@ function Quotes() {
       <Quote isLoading={isLoading} data={data} />
       <button className={styles.refresh_button} onClick={loadData} disabled={isLoading}>
         <RiRefreshLine className={classNames({ [styles.rotating]: isLoading })} />
-        {classNames({
-          '(press spacebar)': !('ontouchstart' in document.documentElement),
-        })}
+        {!isLoading &&
+          classNames({
+            '(press spacebar)': !('ontouchstart' in document.documentElement),
+          })}
       </button>
     </main>
   )
