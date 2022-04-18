@@ -1,9 +1,6 @@
-<!-- TODO: -->
-<!-- ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png) -->
+![Logo](https://quotes-bytes.vercel.app/logo/transparent.svg)
 
-# Quotes bytes
-
-[Bang quotes](https://quotes-bytes.vercel.app/)
+[Bang quotes - website](https://quotes-bytes.vercel.app/)
 
 ## Tech Stack
 
