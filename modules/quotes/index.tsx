@@ -7,6 +7,8 @@ import { getProgrammingQuotes, QuoteData } from 'modules/common/quotesSources'
 import { useKeyPress } from 'modules/hooks'
 
 import classNames from 'classnames'
+import Image from 'next/image'
+import { BiSpaceBar } from 'react-icons/bi'
 import { RiRefreshLine } from 'react-icons/ri'
 
 function Quotes() {
@@ -14,6 +16,7 @@ function Quotes() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const mustFetchData = useRef(true)
   const spaceBarPress = useKeyPress(' ')
+  const isDeviceMobile = 'ontouchstart' in document.documentElement
 
   const loadData = useCallback(async () => {
     setIsLoading(true)
@@ -32,16 +35,24 @@ function Quotes() {
   }, [loadData, spaceBarPress])
 
   return (
-    <main className={styles.main}>
-      <Quote isLoading={isLoading} data={data} />
-      <button className={styles.refresh_button} onClick={loadData} disabled={isLoading}>
-        <RiRefreshLine className={classNames({ [styles.rotating]: isLoading })} />
-        {!isLoading &&
-          classNames({
-            '(press spacebar)': !('ontouchstart' in document.documentElement),
-          })}
-      </button>
-    </main>
+    <>
+      <div className={styles.logo_wrapper}>
+        <Image src='/logo/transparent.svg' alt='transparent logo' layout='responsive' width='200' height='200' />
+      </div>
+      <main className={styles.main}>
+        <Quote isLoading={isLoading} data={data} />
+        <button
+          type='button'
+          className={styles.refresh_button}
+          onClick={loadData}
+          disabled={isLoading}
+          title={isDeviceMobile ? 'refresh' : 'press spacebar'}
+        >
+          <RiRefreshLine className={classNames({ [styles.rotating]: isLoading })} />
+          {!isDeviceMobile && <BiSpaceBar />}
+        </button>
+      </main>
+    </>
   )
 }
 

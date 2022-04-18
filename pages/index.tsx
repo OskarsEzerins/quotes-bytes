@@ -10,8 +10,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Quotes Bytes</title>
         <meta name='description' content='Bang quotes' />
-        {/* TODO: */}
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/favicon.svg' />
         <link rel='preload' href='/SinkinSans-400Italic.otf' as='font' crossOrigin='' />
         <link rel='preload' href='/SinkinSans-400Regular.otf' as='font' crossOrigin='' />
       </Head>

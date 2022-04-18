@@ -1,9 +1,9 @@
 .main
+  display: grid
+  grid-template-rows: 1fr auto
+  place-items: center
   font-size: 1.25rem
   font-family: 'SinkinSans', sans-serif
-  display: grid
-  place-items: center
-  grid-template-rows: 1fr auto
   height: 90vh
   padding: 5vmin
 
@@ -11,21 +11,31 @@
     font-size: 0.8rem
     color: #646161
 
+.logo_wrapper
+  position: fixed
+  bottom: 1vh
+  right: 1vh
+  width: 30vh
+  height: 30vh
+  opacity: 0.1
+
 .refresh_button
   display: grid
   place-items: center
-  font-size: 1rem
-  font-style: italic
-  color: #cbc9c9
+  cursor: pointer
   height: 10vh
   width: 60vw
   background: transparent
   border: none
 
-  svg
+  svg:first-child
     color: #4c4949
-    width: 2em
-    height: 2em
+    width: 3vmax
+    height: 3vmax
+  svg:last-child
+    color: #cbc9c9
+    width: 2vmax
+    height: 2vmax
 
 .rotating
   animation-name: spin

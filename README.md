@@ -3,8 +3,7 @@
 
 # Quotes bytes
 
-<!-- TODO: as link -->
-Bang quotes
+[Bang quotes](https://quotes-bytes.vercel.app/)
 
 ## Tech Stack
 
