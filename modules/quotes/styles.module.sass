@@ -11,12 +11,52 @@
     font-size: 0.8rem
     color: #646161
 
+.choose_kind_menu
+  position: fixed
+  bottom: 12vh
+  left: 5vw
+  height: 20vh
+  width: 80vw
+  max-width: 300px
+  display: flex
+  flex-wrap: wrap
+  gap: 1vmin
+  padding: 1vmin
+  justify-content: space-around
+  overflow: scroll
+  background: white
+
+.choose_kind_menu_button
+  cursor: pointer
+  border: none
+  background: radial-gradient(circle at bottom right, black 50%, transparent) bottom (right / var(--d, 0)) var(--d, 0) no-repeat, radial-gradient(circle at bottom left, black 50%, transparent) bottom (left / var(--d, 0)) var(--d, 0) no-repeat, linear-gradient(black 0 0) (bottom / 10px) 3px no-repeat, linear-gradient(black 0 0) (bottom / 10px) 3px no-repeat
+  transition: 0.3s, background-position 0.3s 0.3s
+
+  &:hover
+    transition: 0.3s, background-size 0.5s 0.3s, color 0.3s 0.3s
+    background-position: bottom right, bottom left
+    --d: 150px
+    color: #fff
+
+.open_kind_menu_button
+  position: fixed
+  bottom: 5vh
+  left: 5vw
+  cursor: pointer
+  background: transparent
+  border: none
+
+  svg
+    color: #4c4949
+    width: 5vh
+    height: 5vh
+
 .logo_wrapper
   position: fixed
   bottom: 1vh
   right: 1vh
-  width: 30vh
-  height: 30vh
+  width: 30vmin
+  height: 30vmin
   opacity: 0.1
 
 .refresh_button
@@ -30,12 +70,12 @@
 
   svg:first-child
     color: #4c4949
-    width: 3vmax
-    height: 3vmax
+    width: 7vh
+    height: 7vh
   svg:last-child
     color: #cbc9c9
-    width: 2vmax
-    height: 2vmax
+    width: 5vh
+    height: 5vh
 
 .rotating
   animation-name: spin

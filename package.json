@@ -12,7 +12,7 @@
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "cogo-toast": "^4.2.3",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "next": "^12.1.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "17.0.23",
     "@types/react": "18.0.1",
     "@types/react-dom": "18.0.0",
