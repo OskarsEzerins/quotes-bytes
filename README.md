@@ -1,4 +1,6 @@
-![Logo](https://quotes-bytes.vercel.app/logo/transparent.svg)
+<div align="center">
+  <img src="https://quotes-bytes.vercel.app/logo/transparent.svg" alt="logo" width='400'>
+</div>
 
 [Bang quotes - website](https://quotes-bytes.vercel.app/)
 
