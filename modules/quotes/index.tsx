@@ -13,7 +13,7 @@ import { RiRefreshLine, RiSwapBoxLine } from 'react-icons/ri'
 
 function Quotes() {
   const [data, setData] = useState<QuoteData>()
-  const [byteKind, setByteKind] = useState<QuoteKind>('programming')
+  const [byteKind, setByteKind] = useState<QuoteKind>('life')
   const [isKindMenuOpen, toggleKindMenuOpen] = useToggler()
   const [isLoading, toggleLoading] = useToggler()
   const mustFetchData = useRef(true)
